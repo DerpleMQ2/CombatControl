@@ -17,7 +17,6 @@ function State.update()
     State.inCombat = mq.TLO.Me.Combat()
     push(State.hp, mq.TLO.Me.PctHPs() or 0, State.maxSamples)
     push(State.mana, mq.TLO.Me.PctMana() or 0, State.maxSamples)
-    push(State.dps, mq.TLO.Me.DPS() or 0, State.maxSamples)
 end
 
 return State

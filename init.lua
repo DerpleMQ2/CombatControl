@@ -1,9 +1,9 @@
 -- CombatControl/main.lua
-local mq    = require('mq')
-local ImGui = require('ImGui')
+local mq      = require('mq')
+local ImGui   = require('ImGui')
 
-local State = require('CombatControl.state')
-local UI    = require('CombatControl.ui')
+local State   = require('CombatControl.state')
+local UI      = require('CombatControl.ui')
 
 local running = true
 local myClass = mq.TLO.Me.Class.ShortName()
@@ -19,6 +19,9 @@ end
 
 local classModule = loadClass()
 
+mq.imgui.init('RGMercsUI', function() return UI.Draw(State, classModule) end)
+
+
 while running do
     mq.doevents()
     State.update()
@@ -29,6 +32,5 @@ while running do
         classModule.IdlePulse(State)
     end
 
-    UI.Draw(State, classModule)
     mq.delay(50)
 end
